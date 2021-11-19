@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".ProfilActivity">
+
+    <ImageButton
+        android:id="@+id/btn_back_profil"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/btn_back"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/btn_home_prof"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="90dp"
+        android:layout_marginBottom="50dp"
+        android:background="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/btnhome_off"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/btn_profil_prof"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="90dp"
+        android:layout_marginBottom="50dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/btnprof_on"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
+        android:text="Profil"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/foto_profil"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="45dp"
+        android:src="@drawable/foto_profil"
+        app:civ_border_color="#2A2630"
+        app:civ_border_width="11dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+    <TextView
+        android:id="@+id/tvNama_profil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Nama User"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foto_profil" />
+
+    <TextView
+        android:id="@+id/tvEmail_profil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="emailuser@mail.co"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNama_profil" />
+
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="341dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="15dp"
+        android:background="@color/black"
+        android:drawableLeft="@drawable/btn_keluar"
+        android:drawableRight="@drawable/arrow_right"
+        android:scaleType="fitXY"
+        android:text="     Keluar"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_ring"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_infoapps"
+        android:layout_width="341dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/black"
+        android:drawableLeft="@drawable/btn_infoapp"
+        android:drawableRight="@drawable/arrow_right"
+        android:scaleType="fitXY"
+        android:text="     Informasi Aplikasi"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_logout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_changepass"
+        android:layout_width="341dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/black"
+        android:drawableLeft="@drawable/btn_changepass"
+        android:drawableRight="@drawable/arrow_right"
+        android:scaleType="fitXY"
+        android:text="     Ganti Password"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_editprof"
+        android:layout_width="341dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/black"
+        android:drawableLeft="@drawable/btn_editprof"
+        android:drawableRight="@drawable/arrow_right"
+        android:scaleType="fitXY"
+        android:text="     Edit Profil"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_changepass"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btn_ring"
+        android:layout_width="58dp"
+        android:layout_height="58dp"
+        android:layout_marginBottom="84dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_profil_prof"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toEndOf="@+id/btn_home_prof"
+        app:srcCompat="@drawable/btn_ring" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="341dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_infoapps"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/linebreak" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
