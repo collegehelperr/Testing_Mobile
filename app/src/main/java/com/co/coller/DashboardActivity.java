@@ -35,7 +35,7 @@ public class DashboardActivity extends AppCompatActivity {
 
         tvNama.setText("Hai, " + sharedPref.getName());
 
-        String urlImg = "https://b182-20-119-63-129.ngrok.io" + sharedPref.getProfImg();
+        String urlImg = "https://3907-20-119-63-129.ngrok.io" + sharedPref.getProfImg();
         Log.i("Url image", urlImg);
 
         Glide.with(this).load(urlImg).into(fotoProf);
