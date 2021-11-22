@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Kuliah/WMA/Coller_Mobile/app/src/main/res/drawable/ciclebar.xml" value="0.3880208333333333" />
+        <entry key="..\:/Kuliah/WMA/Coller_Mobile/app/src/main/res/drawable/circlebar.xml" value="0.3880208333333333" />
+        <entry key="..\:/Kuliah/WMA/Coller_Mobile/app/src/main/res/drawable/circular_pb.xml" value="0.3880208333333333" />
+        <entry key="..\:/Kuliah/WMA/Coller_Mobile/app/src/main/res/layout/activity_college.xml" value="0.33" />
+        <entry key="..\:/Kuliah/WMA/Coller_Mobile/app/src/main/res/layout/activity_dashboard.xml" value="0.33" />
         <entry key="..\:/Kuliah/WMA/Coller_Mobile/app/src/main/res/layout/activity_edit_profil.xml" value="0.2726449275362319" />
         <entry key="..\:/Kuliah/WMA/Coller_Mobile/app/src/main/res/layout/activity_login.xml" value="0.371875" />
         <entry key="..\:/Kuliah/WMA/Coller_Mobile/app/src/main/res/layout/activity_main.xml" value="0.371875" />
@@ -12,6 +17,12 @@
         <entry key="..\:/Kuliah/WMA/Coller_Mobile/app/src/main/res/layout/alert_dialog.xml" value="0.5" />
         <entry key="..\:/Kuliah/WMA/Coller_Mobile/app/src/main/res/layout/alert_dialog_keluar.xml" value="0.371875" />
         <entry key="..\:/Kuliah/WMA/Coller_Mobile/app/src/main/res/layout/alert_dialog_simpan.xml" value="0.38385416666666666" />
+        <entry key="..\:/Kuliah/WMA/Coller_Mobile/app/src/main/res/layout/fragment_note.xml" value="0.3578125" />
+        <entry key="..\:/Kuliah/WMA/Coller_Mobile/app/src/main/res/layout/fragment_schedule.xml" value="0.371875" />
+        <entry key="..\:/Kuliah/WMA/Coller_Mobile/app/src/main/res/layout/fragment_task.xml" value="0.3578125" />
+        <entry key="..\:/Kuliah/WMA/Coller_Mobile/app/src/main/res/layout/fragment_todolist.xml" value="0.371875" />
+        <entry key="..\:/Kuliah/WMA/Coller_Mobile/app/src/main/res/layout/list_item_note.xml" value="0.371875" />
+        <entry key="..\:/Kuliah/WMA/Coller_Mobile/app/src/main/res/menu/bottom_nav.xml" value="0.371875" />
         <entry key="..\:/Kuliah/WMA/Coller_Mobile/app/src/main/res/xml/file_provider.xml" value="0.20885416666666667" />
         <entry key="..\:/Kuliah/WMA/coller/app/src/main/res/drawable/custom_image.xml" value="0.3880208333333333" />
         <entry key="..\:/Kuliah/WMA/coller/app/src/main/res/drawable/rounded_field.xml" value="0.225" />

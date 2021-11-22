@@ -7,6 +7,18 @@
     android:background="@color/black"
     tools:context=".DashboardActivity">
 
+    <ImageButton
+        android:id="@+id/btn_ring_dashboard"
+        android:layout_width="58dp"
+        android:layout_height="58dp"
+        android:layout_marginBottom="84dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_prof"
+        app:layout_constraintStart_toEndOf="@+id/btn_home"
+        app:srcCompat="@drawable/btn_ring" />
+
     <TextView
         android:id="@+id/tv_nama"
         android:layout_width="wrap_content"
@@ -42,6 +54,134 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <com.owl93.dpb.CircularProgressView
+        android:id="@+id/circularProgressView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="170dp"
+        app:gradientCenterColor="#C957FF"
+        app:gradientEndColor="#FF57BC"
+        app:gradientStartColor="#5900EB"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:maxValue="100"
+        app:progress="75"
+        app:strokeEndStyle="square"
+        app:strokeGradientStyle="sweep"
+        app:strokeGradient_linearAngle="270"
+        app:strokeWidth="35dp"
+        app:textColor="@color/white"
+        app:textEnabled="true"
+        app:trackColor="#353535"
+        app:trackWidth="25dp" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/wheel_spinner"
+        android:layout_width="165dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="30dp"
+        app:cardBackgroundColor="#2A2630"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_ring_dashboard"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginBottom="10dp"
+                android:text="Memutuskan secara acak"
+                android:textColor="#9388A2"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:text="Wheel Spinner"
+                android:textColor="#CEC2DF"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/textView20"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:scaleType="fitXY"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_spinner" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/college_manage"
+        android:layout_width="165dp"
+        android:layout_height="120dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        app:cardBackgroundColor="#2A2630"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_ring_dashboard"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:id="@+id/textmengatur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginBottom="10dp"
+                android:text="Mengatur perkuliahan"
+                android:textColor="#9388A2"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/textcollege"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:text="College manage"
+                android:textColor="#CEC2DF"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/textmengatur"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageView
+                android:id="@+id/imagecollege"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:scaleType="fitXY"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_college" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
     <ImageButton
         android:id="@+id/btn_home"
         android:layout_width="48dp"
@@ -51,13 +191,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/btnhome_on" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="205dp" />
 
     <ImageButton
         android:id="@+id/btn_prof"
@@ -70,4 +203,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/btnprof_off" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="15dp"
+        android:text="Dashboard"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/wheel_spinner"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.co.coller;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.co.coller.api.sharedPref;
+import com.co.coller.college.CollegeActivity;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -21,6 +23,7 @@ public class DashboardActivity extends AppCompatActivity {
     TextView tvNama;
     sharedPref sharedPref;
     CircleImageView fotoProf;
+    CardView btnSpinner, btnCollege;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,8 @@ public class DashboardActivity extends AppCompatActivity {
         tvNama = (TextView) findViewById(R.id.tv_nama);
         btnProfil = (ImageButton) findViewById(R.id.btn_prof);
         fotoProf = (CircleImageView) findViewById(R.id.foto_profil_dashboard);
+        btnSpinner = (CardView) findViewById(R.id.wheel_spinner);
+        btnCollege = (CardView) findViewById(R.id.college_manage);
 
         tvNama.setText("Hai, " + sharedPref.getName());
 
@@ -44,6 +49,21 @@ public class DashboardActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(DashboardActivity.this, ProfilActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+        });
+
+        btnSpinner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        btnCollege.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(DashboardActivity.this, CollegeActivity.class));
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });

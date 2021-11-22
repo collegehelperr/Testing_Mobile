@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_note"
+        android:icon="@drawable/ic_note_on"
+        android:title="note" />
+    <item
+        android:id="@+id/nav_schedule"
+        android:icon="@drawable/ic_schedule_off"
+        android:title="Schedule"/>
+    <item
+        android:id="@+id/nav_task"
+        android:icon="@drawable/ic_task_off"
+        android:title="Task"/>
+    <item
+        android:id="@+id/nav_todolist"
+        android:icon="@drawable/ic_todolist_off"
+        android:title="To do list"/>
+
+</menu>
