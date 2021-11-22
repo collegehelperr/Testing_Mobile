@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Coller">
         <activity
+            android:name=".college.AddNoteActivity"
+            android:exported="true" />
+        <activity
             android:name=".college.CollegeActivity"
             android:exported="true" />
         <activity

@@ -1,32 +1,28 @@
 package com.co.coller.college;
 
+import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.co.coller.EditProfilActivity;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.co.coller.R;
 import com.co.coller.adapter.noteAdapter;
 import com.co.coller.api.api;
 import com.co.coller.api.apiClient;
 import com.co.coller.api.sharedPref;
 import com.co.coller.model.note;
-import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -38,13 +34,32 @@ import retrofit2.Response;
  */
 public class NoteFragment extends Fragment {
 
+    public static final String JUDUL = "judul_note";
+    public static final String BODY = "isi_note";
+    public static final String ID = "id_note";
+
     RecyclerView rvNote;
     ProgressBar progressBar;
-    LinearLayoutManager layoutManager;
     noteAdapter adapter;
     ArrayList<note> listNote;
     api api;
     sharedPref sharedPref;
+    Button addNote;
+    private View.OnClickListener onItemClicklistener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            RecyclerView.ViewHolder viewHolder = (RecyclerView.ViewHolder) view.getTag();
+            int position = viewHolder.getAdapterPosition();
+            note thisitem = listNote.get(position);
+
+            Intent intent = new Intent(getContext(), AddNoteActivity.class);
+            intent.putExtra(JUDUL, thisitem.getJudulNote());
+            intent.putExtra(BODY, thisitem.getIsiNote());
+            intent.putExtra(ID, thisitem.getIdNote());
+            startActivity(intent);
+            //Toast.makeText(getContext(), "You Clicked: " + thisitem.getJudulNote(), Toast.LENGTH_SHORT).show();
+        }
+    };
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -96,9 +111,18 @@ public class NoteFragment extends Fragment {
 
         rvNote = view.findViewById(R.id.rvNote);
         progressBar = view.findViewById(R.id.progressBar);
+        addNote = (Button) view.findViewById(R.id.btn_add_note);
 
         getNote();
         progressBar.setVisibility(View.VISIBLE);
+
+        addNote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(view.getContext(), AddNoteActivity.class));
+                getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+        });
         return view;
     }
 
@@ -115,12 +139,13 @@ public class NoteFragment extends Fragment {
                 rvNote.setAdapter(adapter);
                 rvNote.setLayoutManager(new GridLayoutManager(getContext(), 2));
                 progressBar.setVisibility(View.GONE);
+                adapter.setOnItemClicklistener(onItemClicklistener);
                 //Toast.makeText(getContext(), "sukses", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailure(Call<List<note>> call, Throwable t) {
-                Toast.makeText(getContext(), "failed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(),t.getLocalizedMessage(),Toast.LENGTH_SHORT).show();
             }
         });
     }

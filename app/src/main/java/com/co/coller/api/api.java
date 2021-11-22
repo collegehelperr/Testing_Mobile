@@ -12,6 +12,7 @@ import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
@@ -47,4 +48,16 @@ public interface api {
 
     @GET("note.php")
     Call<List<note>> getNote(@Query("uid") String uid);
+
+    @FormUrlEncoded
+    @POST("note.php")
+    Call<JsonObject> addNote(@Field("uid") String uid,
+                               @Field("judul") String judul,
+                               @Field("note") String note);
+
+    @FormUrlEncoded
+    @POST("note.php")
+    Call<JsonObject> updateNote(@Field("id_note") String id_note,
+                             @Field("judul") String judul,
+                             @Field("note") String note);
 }

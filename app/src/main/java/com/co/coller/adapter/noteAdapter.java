@@ -1,5 +1,7 @@
 package com.co.coller.adapter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +18,7 @@ import java.util.ArrayList;
 public class noteAdapter extends RecyclerView.Adapter<noteAdapter.ViewHolder> {
 
     private ArrayList<note> listNote;
+    private View.OnClickListener mOnItemClicklistener;
 
     public noteAdapter(ArrayList<note> listNote) {
         this.listNote = listNote;
@@ -35,12 +38,15 @@ public class noteAdapter extends RecyclerView.Adapter<noteAdapter.ViewHolder> {
         holder.tvJudul.setText(listNote.get(position).getJudulNote());
         holder.tvTanggal.setText(listNote.get(position).getTglNote());
         holder.tvBody.setText(listNote.get(position).getIsiNote());
-
     }
 
     @Override
     public int getItemCount() {
         return listNote.size();
+    }
+
+    public void setOnItemClicklistener(View.OnClickListener itemClicklistener){
+        mOnItemClicklistener = itemClicklistener;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -53,6 +59,9 @@ public class noteAdapter extends RecyclerView.Adapter<noteAdapter.ViewHolder> {
             tvJudul = itemView.findViewById(R.id.tv_judul_note);
             tvTanggal = itemView.findViewById(R.id.tv_tgl_note);
             tvBody = itemView.findViewById(R.id.tv_body_note);
+
+            itemView.setTag(this);
+            itemView.setOnClickListener(mOnItemClicklistener);
         }
     }
 }
