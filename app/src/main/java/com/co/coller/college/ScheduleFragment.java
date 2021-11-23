@@ -2,13 +2,21 @@ package com.co.coller.college;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.co.coller.R;
+import com.co.coller.college.schedule.KamisFragment;
+import com.co.coller.college.schedule.RabuFragment;
+import com.co.coller.college.schedule.SelasaFragment;
+import com.co.coller.college.schedule.SeninFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +24,8 @@ import com.co.coller.R;
  * create an instance of this fragment.
  */
 public class ScheduleFragment extends Fragment {
+
+    BottomNavigationView day1Nav, day2Nav;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +71,37 @@ public class ScheduleFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_schedule, container, false);
+        View view = inflater.inflate(R.layout.fragment_schedule, container, false);
+
+        day1Nav = view.findViewById(R.id.day1Nav);
+        day2Nav = view.findViewById(R.id.day2Nav);
+
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentday_container, new SeninFragment()).commit();
+
+        day1Nav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Fragment selectedFragment = null;
+
+                switch (item.getItemId()){
+                    case R.id.senin:
+                        selectedFragment = new SeninFragment();
+                        break;
+                    case R.id.selasa:
+                        selectedFragment = new SelasaFragment();
+                        break;
+                    case R.id.rabu:
+                        selectedFragment = new RabuFragment();
+                        break;
+                    case R.id.kamis:
+                        selectedFragment = new KamisFragment();
+                        break;
+                }
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentday_container, selectedFragment).commit();
+
+                return true;
+            }
+        });
+        return view;
     }
 }
