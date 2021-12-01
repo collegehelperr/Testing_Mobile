@@ -11,8 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.co.coller.R;
+import com.co.coller.college.schedule.JumatFragment;
 import com.co.coller.college.schedule.KamisFragment;
+import com.co.coller.college.schedule.MingguFragment;
 import com.co.coller.college.schedule.RabuFragment;
+import com.co.coller.college.schedule.SabtuFragment;
 import com.co.coller.college.schedule.SelasaFragment;
 import com.co.coller.college.schedule.SeninFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -95,6 +98,28 @@ public class ScheduleFragment extends Fragment {
                         break;
                     case R.id.kamis:
                         selectedFragment = new KamisFragment();
+                        break;
+                }
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentday_container, selectedFragment).commit();
+
+                return true;
+            }
+        });
+
+        day2Nav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Fragment selectedFragment = null;
+
+                switch (item.getItemId()){
+                    case R.id.jumat:
+                        selectedFragment = new JumatFragment();
+                        break;
+                    case R.id.sabtu:
+                        selectedFragment = new SabtuFragment();
+                        break;
+                    case R.id.minggu:
+                        selectedFragment = new MingguFragment();
                         break;
                 }
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentday_container, selectedFragment).commit();

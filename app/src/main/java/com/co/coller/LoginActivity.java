@@ -96,7 +96,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private void mainLogin(String email, String password) {
         api = apiClient.getClient().create(api.class);
-
         Call<JsonObject> login = api.postLogin(email, password);
 
         login.enqueue(new Callback<JsonObject>() {

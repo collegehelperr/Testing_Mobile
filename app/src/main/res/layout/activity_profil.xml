@@ -58,44 +58,54 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/foto_profil"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:layout_marginTop="45dp"
-        android:src="@drawable/foto_profil"
-        app:civ_border_color="#2A2630"
-        app:civ_border_width="11dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
-
-    <TextView
-        android:id="@+id/tvNama_profil"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="Nama User"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/btn_editprof"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/foto_profil" />
+        app:layout_constraintTop_toBottomOf="@+id/textView10">
 
-    <TextView
-        android:id="@+id/tvEmail_profil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="emailuser@mail.co"
-        android:textColor="#9388A2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvNama_profil" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/foto_profil"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:src="@drawable/foto_profil"
+            app:civ_border_color="#2A2630"
+            app:civ_border_width="11dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvNama_profil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Nama User"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/foto_profil" />
+
+        <TextView
+            android:id="@+id/tvEmail_profil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="emailuser@mail.co"
+            android:textColor="#9388A2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvNama_profil" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <Button
         android:id="@+id/btn_logout"
@@ -109,8 +119,8 @@
         android:text="     Keluar"
         android:textAlignment="textStart"
         android:textAllCaps="false"
-        android:textSize="16sp"
         android:textColor="#9388A2"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/btn_ring"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -128,8 +138,8 @@
         android:text="     Informasi Aplikasi"
         android:textAlignment="textStart"
         android:textAllCaps="false"
-        android:textSize="16sp"
         android:textColor="#9388A2"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/btn_logout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -147,8 +157,8 @@
         android:text="     Ganti Password"
         android:textAlignment="textStart"
         android:textAllCaps="false"
-        android:textSize="16sp"
         android:textColor="#9388A2"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -166,8 +176,8 @@
         android:text="     Edit Profil"
         android:textAlignment="textStart"
         android:textAllCaps="false"
-        android:textSize="16sp"
         android:textColor="#9388A2"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/btn_changepass"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

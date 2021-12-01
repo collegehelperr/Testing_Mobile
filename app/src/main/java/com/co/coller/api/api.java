@@ -2,6 +2,7 @@ package com.co.coller.api;
 
 import com.co.coller.model.note;
 import com.co.coller.model.schedule;
+import com.co.coller.model.task;
 import com.google.gson.JsonObject;
 
 import java.util.List;
@@ -72,4 +73,50 @@ public interface api {
     @GET("schedule.php")
     Call<List<schedule>> getSchedule(@Query("uid") String uid,
                                      @Query("hari") String hari);
+
+    @FormUrlEncoded
+    @POST("schedule.php")
+    Call<JsonObject> addSchedule(@Field("uid") String uid,
+                             @Field("hari") String hari,
+                             @Field("jam_mulai") String jam_mulai,
+                             @Field("jam_berakhir") String jam_berakhir,
+                             @Field("nama_schedule") String nama_schedule);
+
+    @FormUrlEncoded
+    @POST("schedule.php")
+    Call<JsonObject> updateSchedule(@Field("id_schedule") String id_schedule,
+                                 @Field("hari") String hari,
+                                 @Field("jam_mulai") String jam_mulai,
+                                 @Field("jam_berakhir") String jam_berakhir,
+                                 @Field("nama_schedule") String nama_schedule);
+
+    @FormUrlEncoded
+    @POST("schedule.php")
+    Call<JsonObject> deleteSchedule(@Field("id_schedule_delete") String id_schedule);
+
+    @GET("task.php")
+    Call<List<task>> getTask(@Query("uid") String uid);
+
+    @FormUrlEncoded
+    @POST("task.php")
+    Call<JsonObject> updateStatusTask(@Field("id_task") String id_task,
+                                      @Field("status") String status);
+
+    @FormUrlEncoded
+    @POST("task.php")
+    Call<JsonObject> addTask(@Field("uid") String uid,
+                                      @Field("detail_task") String detail_task,
+                                      @Field("jenis") String jenis_task,
+                                      @Field("tanggal") String tanggal);
+
+    @FormUrlEncoded
+    @POST("task.php")
+    Call<JsonObject> updateTask(@Field("id_task") String id_task,
+                             @Field("detail_task") String detail_task,
+                             @Field("id_jenis") String jenis_task,
+                             @Field("tanggal") String tanggal);
+
+    @FormUrlEncoded
+    @POST("task.php")
+    Call<JsonObject> deleteTask(@Field("id_task_delete") String id_task);
 }

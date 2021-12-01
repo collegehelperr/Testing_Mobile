@@ -4,10 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Switch;
 
+import com.co.coller.DashboardActivity;
+import com.co.coller.EditProfilActivity;
+import com.co.coller.ProfilActivity;
 import com.co.coller.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -66,5 +70,11 @@ public class CollegeActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(CollegeActivity.this, DashboardActivity.class));
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

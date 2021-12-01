@@ -1,5 +1,6 @@
 package com.co.coller.college.schedule;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,13 +10,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.co.coller.R;
-import com.co.coller.adapter.scheduleSeninAdapter;
+import com.co.coller.adapter.scheduleAdapter;
 import com.co.coller.api.api;
 import com.co.coller.api.apiClient;
 import com.co.coller.api.sharedPref;
+import com.co.coller.college.AddNoteActivity;
 import com.co.coller.model.schedule;
 
 import java.util.ArrayList;
@@ -32,11 +35,35 @@ import retrofit2.Response;
  */
 public class SeninFragment extends Fragment {
 
+    public static final String ID = "id_schedule";
+    public static final String NAMA = "nama_schedule";
+    public static final String JAM_MULAI = "waktu_mulai";
+    public static final String JAM_BERAKHIR = "waktu_berakhir";
+    public static final String HARI = "hari";
+
     RecyclerView rvSenin;
-    scheduleSeninAdapter adapter;
+    scheduleAdapter adapter;
     ArrayList<schedule> listSchedule;
     api api;
     sharedPref sharedPref;
+    Button btnNew;
+    private View.OnClickListener onItemClicklistener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            RecyclerView.ViewHolder viewHolder = (RecyclerView.ViewHolder) view.getTag();
+            int position = viewHolder.getAdapterPosition();
+            schedule selectedItem = listSchedule.get(position);
+
+            Intent intent = new Intent(getContext(), AddScheduleActivity.class);
+            intent.putExtra(ID, selectedItem.getIdSchedule());
+            intent.putExtra(NAMA, selectedItem.getNamaSchedule());
+            intent.putExtra(JAM_MULAI, selectedItem.getWaktuMulai());
+            intent.putExtra(JAM_BERAKHIR, selectedItem.getWaktuBerakhir());
+            intent.putExtra(HARI, selectedItem.getHari());
+            startActivity(intent);
+        }
+    };
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -87,15 +114,24 @@ public class SeninFragment extends Fragment {
         sharedPref = new sharedPref(view.getContext());
 
         rvSenin = view.findViewById(R.id.rvSenin);
+        btnNew = (Button) view.findViewById(R.id.btn_new_senin);
 
         getMatkul();
+
+        btnNew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(view.getContext(), AddScheduleActivity.class));
+                getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+        });
 
         return view;
     }
 
     private void getMatkul() {
         final String uid = sharedPref.getUid();
-        final String hari = "senin";
+        final String hari = "Senin";
 
         api = apiClient.getClient().create(api.class);
         Call<List<schedule>> getSchedule = api.getSchedule(uid, hari);
@@ -104,9 +140,10 @@ public class SeninFragment extends Fragment {
             @Override
             public void onResponse(Call<List<schedule>> call, Response<List<schedule>> response) {
                 listSchedule = new ArrayList<>(response.body());
-                adapter = new scheduleSeninAdapter(listSchedule);
+                adapter = new scheduleAdapter(listSchedule);
                 rvSenin.setAdapter(adapter);
                 rvSenin.setLayoutManager(new LinearLayoutManager(getContext()));
+                adapter.setOnItemClicklistener(onItemClicklistener);
             }
 
             @Override

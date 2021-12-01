@@ -1,14 +1,38 @@
 package com.co.coller.college;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.co.coller.R;
+import com.co.coller.adapter.noteAdapter;
+import com.co.coller.adapter.taskAdapter;
+import com.co.coller.api.api;
+import com.co.coller.api.apiClient;
+import com.co.coller.api.sharedPref;
+import com.co.coller.model.note;
+import com.co.coller.model.task;
+import com.google.gson.JsonObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +40,35 @@ import com.co.coller.R;
  * create an instance of this fragment.
  */
 public class TaskFragment extends Fragment {
+
+    public static final String ID = "id_task";
+    public static final String JENIS = "jenis";
+    public static final String TANGGAL = "tanggal";
+    public static final String DETAIL = "detail_task";
+
+    RecyclerView rvTask;
+    ArrayList<task> listTask;
+    com.co.coller.api.api api;
+    com.co.coller.api.sharedPref sharedPref;
+    taskAdapter adapter;
+    TextView addTask;
+
+    private View.OnClickListener onItemClicklistener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            RecyclerView.ViewHolder viewHolder = (RecyclerView.ViewHolder) view.getTag();
+            int position = viewHolder.getAdapterPosition();
+            task thisitem = listTask.get(position);
+
+            Intent intent = new Intent(getContext(), AddTaskActivity.class);
+            intent.putExtra(ID, thisitem.getIdTask());
+            intent.putExtra(JENIS, thisitem.getIdJenis());
+            intent.putExtra(TANGGAL, thisitem.getTglDdline());
+            intent.putExtra(DETAIL, thisitem.getDetailTask());
+            startActivity(intent);
+        }
+    };
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +114,44 @@ public class TaskFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_task, container, false);
+        View view = inflater.inflate(R.layout.fragment_task, container, false);
+
+        sharedPref = new sharedPref(view.getContext());
+        rvTask = view.findViewById(R.id.rvTask);
+        addTask = (TextView) view.findViewById(R.id.add_task);
+
+        getTask();
+
+        addTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(view.getContext(), AddTaskActivity.class));
+                getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+        });
+
+        return view;
+    }
+
+    private void getTask() {
+        final String uid = sharedPref.getUid();
+        api = apiClient.getClient().create(api.class);
+        Call<List<task>> getTask = api.getTask(uid);
+
+        getTask.enqueue(new Callback<List<task>>() {
+            @Override
+            public void onResponse(Call<List<task>> call, Response<List<task>> response) {
+                listTask = new ArrayList<>(response.body());
+                adapter = new taskAdapter(listTask);
+                rvTask.setAdapter(adapter);
+                rvTask.setLayoutManager(new LinearLayoutManager(getContext()));
+                adapter.setOnItemClicklistener(onItemClicklistener);
+            }
+
+            @Override
+            public void onFailure(Call<List<task>> call, Throwable t) {
+
+            }
+        });
     }
 }

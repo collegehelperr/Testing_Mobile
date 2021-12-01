@@ -19,10 +19,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.co.coller.EditProfilActivity;
+import com.co.coller.ProfilActivity;
 import com.co.coller.R;
 import com.co.coller.api.api;
 import com.co.coller.api.apiClient;
 import com.co.coller.api.sharedPref;
+import com.co.coller.college.schedule.AddScheduleActivity;
 import com.co.coller.model.note;
 import com.google.gson.JsonObject;
 
@@ -89,6 +91,12 @@ public class AddNoteActivity extends AppCompatActivity {
                 formCheck();
             }
         });
+    }
+
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(AddNoteActivity.this, CollegeActivity.class));
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
     private void showDialog() {
