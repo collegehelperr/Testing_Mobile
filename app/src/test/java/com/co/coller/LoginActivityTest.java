@@ -25,7 +25,6 @@ public class LoginActivityTest {
 
     private String email = "admin@admin.com";
     private String password = "admin";
-    private LoginActivity loginActivity;
     private String message = null;
     private com.co.coller.api.api api;
     private final CountDownLatch latch = new CountDownLatch(1);
@@ -43,7 +42,6 @@ public class LoginActivityTest {
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
                 message = response.body().toString();
                 latch.countDown();
-                System.out.println(message);
             }
 
             @Override
