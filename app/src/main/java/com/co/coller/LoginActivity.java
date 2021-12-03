@@ -94,7 +94,7 @@ public class LoginActivity extends AppCompatActivity {
         mainLogin(email,password);
     }
 
-    private void mainLogin(String email, String password) {
+    public void mainLogin(String email, String password) {
         api = apiClient.getClient().create(api.class);
         Call<JsonObject> login = api.postLogin(email, password);
 
